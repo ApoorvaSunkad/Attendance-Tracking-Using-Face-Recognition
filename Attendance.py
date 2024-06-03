@@ -18,7 +18,7 @@ and import them and find encodings for them.
 import os
 from datetime import datetime
 
-path = ''  # images file path
+path = 'D:\Python Projects\FaceRecognition_Attendance Project\imagesAttendance' # images file path
 images = []
 
 classNames = [] # to output the images list
@@ -54,7 +54,7 @@ def findEncodings(images):
 #once the face is detected we will mark the attendance
 def markAttendance(name):
     #we will just mark there name and time they have arrived at
-    with open('../FaceRecognition_Project/AttendanceTracker.csv', 'r+') as f:
+    with open('AttendanceTracker.csv','a+') as f:
         # now we will read in all the lines that we have currently in our data
         # reason for this is if somebody has arrived we don't want to repeat it.
         #creating the list
@@ -120,8 +120,8 @@ while True: # to get each frame one by one
             #to create a bounding box around the face
             y1,x2,y2,x1 = faceLoc #this faceLoc gives the location of face detected
             y1, x2, y2, x1 = y1*4,x2*4,y2*4,x1*4
-            cv2.rectangle(img,(x1,y1),(x2,y2),(0,255,0),2)
-            cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
+            cv2.rectangle(img,(x1,y1),(x2,y2),(0,0,255),2)
+            cv2.rectangle(img,(x1,y2-35),(x2,y2),(0,0,255),cv2.FILLED)
             cv2.putText(img,name,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),2)
 
             # Whenever we find a match we will call the mark attendance function to mark attendance
